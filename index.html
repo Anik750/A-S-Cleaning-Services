@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A&S Cleaning Services – Southern California</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0b1f3a;
+      --blue:    #1558a8;
+      --sky:     #3a9bd5;
+      --white:   #f5f9ff;
+      --offwhite:#e8f0fa;
+      --gold:    #f0a500;
+      --text:    #1a2a40;
+      --muted:   #5a718a;
+      --card-bg: #ffffff;
+      --radius:  10px;
+      --shadow:  0 8px 32px rgba(11,31,58,.13);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; letter-spacing: .02em; }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(11,31,58,.96); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 64px;
+      box-shadow: 0 2px 18px rgba(11,31,58,.4);
+    }
+    .nav-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 1.55rem; font-weight: 900; color: var(--white); letter-spacing: .06em; text-decoration: none; }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #c5d8f0; font-size: .92rem; font-weight: 700; text-decoration: none; letter-spacing: .07em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--navy) !important; padding: .4rem 1.2rem; border-radius: 4px; }
+    .nav-cta:hover { background: #ffc533; color: var(--navy) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(11,31,58,.84) 0%, rgba(21,88,168,.58) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+      padding: 0 10vw;
+    }
+    .hero-eyebrow {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .85rem;
+      letter-spacing: .18em; text-transform: uppercase; padding: .3rem 1rem; border-radius: 3px;
+      margin-bottom: 1.2rem; animation: fadeUp .6s .1s both;
+    }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; color: #fff; line-height: 1.05; max-width: 680px; animation: fadeUp .6s .2s both; }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub { margin-top: 1.2rem; font-size: 1.15rem; color: #b8d4f0; max-width: 500px; line-height: 1.65; animation: fadeUp .6s .35s both; }
+    .hero-btns { margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .6s .5s both; }
+    .btn-primary { background: var(--gold); color: var(--navy); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .09em; text-transform: uppercase; padding: .85rem 2.2rem; border-radius: 5px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,165,0,.4); }
+    .btn-outline { border: 2px solid #fff; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .09em; text-transform: uppercase; padding: .85rem 2.2rem; border-radius: 5px; text-decoration: none; transition: background .2s, color .2s; }
+    .btn-outline:hover { background: #fff; color: var(--navy); }
+    .hero-badges { margin-top: 3rem; display: flex; gap: 1.8rem; flex-wrap: wrap; animation: fadeUp .6s .65s both; }
+    .badge { display: flex; align-items: center; gap: .55rem; color: #c5d8f0; font-size: .88rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .badge-icon { font-size: 1.3rem; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* SECTIONS */
+    section { padding: 90px 10vw; }
+    .section-label { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--sky); border-left: 3px solid var(--gold); padding-left: .65rem; margin-bottom: 1rem; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--navy); line-height: 1.1; margin-bottom: .7rem; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; }
+
+    /* SERVICES */
+    #services { background: var(--offwhite); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .service-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem 1.8rem; box-shadow: var(--shadow); border-top: 4px solid var(--sky); transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(11,31,58,.16); }
+    .service-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 70px; background: linear-gradient(135deg, transparent 50%, rgba(58,155,213,.07) 50%); border-radius: 0 0 var(--radius) 0; }
+    .service-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .service-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+    .service-card p { color: var(--muted); font-size: .93rem; line-height: 1.6; margin-bottom: 1.2rem; }
+    .service-price { display: inline-block; background: var(--navy); color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; padding: .3rem .9rem; border-radius: 4px; letter-spacing: .04em; }
+
+    /* WHY US */
+    #why { background: var(--navy); }
+    #why .section-title { color: #fff; }
+    #why .section-label { color: var(--gold); }
+    #why .section-sub { color: #8ab4d8; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .why-item { text-align: center; }
+    .why-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: .4rem; }
+    .why-item h4 { color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem; }
+    .why-item p { color: #7a9ec0; font-size: .9rem; line-height: 1.6; }
+
+    /* TEAM */
+    #team { background: var(--white); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .team-card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; text-align: center; transition: transform .2s; }
+    .team-card:hover { transform: translateY(-4px); }
+    .team-photo { width: 100%; height: 260px; background: linear-gradient(135deg, var(--offwhite), #c8ddf4); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; gap: .6rem; }
+    .photo-placeholder-icon { font-size: 3.5rem; opacity: .35; }
+    .photo-placeholder-text { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); opacity: .7; max-width: 160px; text-align: center; line-height: 1.5; }
+    .team-info { padding: 1.5rem 1.8rem 2rem; }
+    .team-info h3 { font-size: 1.6rem; font-weight: 900; color: var(--navy); margin-bottom: .2rem; }
+    .team-role { font-family: 'Barlow Condensed', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--sky); margin-bottom: 1rem; }
+    .team-contact { display: flex; flex-direction: column; gap: .45rem; margin-top: .8rem; }
+    .team-contact a { color: var(--blue); text-decoration: none; font-size: .93rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: .4rem; transition: color .2s; }
+    .team-contact a:hover { color: var(--gold); }
+
+    /* CONTACT */
+    #contact { background: var(--offwhite); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+    @media (max-width: 780px) { .contact-wrap { grid-template-columns: 1fr; } }
+    .contact-info h3 { font-size: 1.8rem; font-weight: 900; color: var(--navy); margin-bottom: 1.4rem; }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-list li { display: flex; align-items: flex-start; gap: .8rem; color: var(--text); font-size: .97rem; }
+    .c-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
+    .contact-list a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .contact-list a:hover { color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group label { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea { padding: .75rem 1rem; border: 1.5px solid #c8d8ea; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: .95rem; color: var(--text); background: #fff; transition: border-color .2s; outline: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sky); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { background: var(--navy); color: #fff; border: none; cursor: pointer; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: .12em; text-transform: uppercase; padding: .9rem 2rem; border-radius: 6px; transition: background .2s, transform .15s; margin-top: .4rem; }
+    .form-submit:hover { background: var(--blue); transform: translateY(-2px); }
+
+    /* SERVICE AREA STRIP */
+    .area-strip { background: linear-gradient(90deg, var(--navy), var(--blue)); padding: 1.8rem 10vw; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .area-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); flex-shrink: 0; }
+    .area-cities { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .city-chip { background: rgba(255,255,255,.1); color: #c8ddf4; border-radius: 20px; padding: .25rem .9rem; font-size: .85rem; font-weight: 700; letter-spacing: .05em; }
+
+    /* FOOTER */
+    footer { background: #050e1c; padding: 2.5rem 10vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--white); letter-spacing: .06em; }
+    .footer-brand span { color: var(--gold); }
+    footer p { color: #4a6580; font-size: .85rem; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s, transform .6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 700px) { .nav-links { display: none; } .hero { padding: 0 6vw; } section { padding: 60px 6vw; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a class="nav-brand" href="#"><span>A&amp;S</span> Cleaning Services</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <span class="hero-eyebrow">📍 Southern California's Trusted Cleaning Pros</span>
+    <h1>Spotless Results,<br /><span>Every Time.</span></h1>
+    <p class="hero-sub">Professional pressure washing, window cleaning, roof &amp; gutter service, and car detailing — serving homes and businesses across Southern California.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><span class="badge-icon">✅</span> Licensed &amp; Insured</div>
+      <div class="badge"><span class="badge-icon">⚡</span> Same-Day Availability</div>
+      <div class="badge"><span class="badge-icon">🌟</span> 100% Satisfaction Guaranteed</div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA STRIP -->
+  <div class="area-strip">
+    <span class="area-label">🗺️ We Serve</span>
+    <div class="area-cities">
+      <span class="city-chip">Los Angeles</span>
+      <span class="city-chip">Orange County</span>
+      <span class="city-chip">Long Beach</span>
+      <span class="city-chip">Riverside</span>
+      <span class="city-chip">San Bernardino</span>
+      <span class="city-chip">Torrance</span>
+      <span class="city-chip">Cerritos</span>
+      <span class="city-chip">&amp; Surrounding Areas</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="reveal">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Our Cleaning Services</h2>
+      <p class="section-sub">Affordable, professional-grade cleaning for your home, roof, vehicle, and more.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">💧</div>
+        <h3>Pressure Washing</h3>
+        <p>High-pressure cleaning for driveways, patios, fences, siding, and more. We blast away dirt, mold, and grime to restore surfaces to like-new condition.</p>
+        <span class="service-price">One Side – $100 &nbsp;|&nbsp; Both Sides – $175</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🪟</div>
+        <h3>Window Cleaning</h3>
+        <p>Crystal-clear windows inside and out. We use professional squeegees and streak-free solutions for a spotless finish you'll love.</p>
+        <span class="service-price">Full House – $50</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏠</div>
+        <h3>Roof &amp; Gutter Cleaning</h3>
+        <p>Remove debris, leaves, moss, and buildup from your roof and gutters — protecting your home from water damage and extending roof life.</p>
+        <span class="service-price">Starting at $125</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚗</div>
+        <h3>Car Detailing</h3>
+        <p>Interior and exterior detailing that brings your vehicle back to showroom quality. Hand-wash, vacuum, wipe-down, and more.</p>
+        <span class="service-price">Full Detail – $100</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="reveal">
+      <span class="section-label">Why Choose A&amp;S</span>
+      <h2 class="section-title">Built on Hard Work &amp; Honesty</h2>
+      <p class="section-sub" style="color:#8ab4d8;">We're a small local team that shows up on time, works hard, and stands behind every job we do.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">100%</div>
+        <h4>Satisfaction Guaranteed</h4>
+        <p>We don't leave until you're happy. Every job is done right the first time.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">$0</div>
+        <h4>Free Estimates</h4>
+        <p>No hidden fees, no surprises. Get a clear, upfront quote before we start.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">Pro</div>
+        <h4>Pro-Grade Equipment</h4>
+        <p>Commercial pressure washers, detail kits, and proper safety gear on every job.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">SoCal</div>
+        <h4>Locally Owned</h4>
+        <p>We're your neighbors — invested in keeping Southern California homes looking their best.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="reveal">
+      <span class="section-label">The Team</span>
+      <h2 class="section-title">Meet the Owners</h2>
+      <p class="section-sub">A locally-owned operation with a passion for quality and a commitment to our community.</p>
+    </div>
+    <div class="team-grid">
+
+      <!-- ===== OWNER 1 — EDIT BELOW ===== -->
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <!--
+            ADD YOUR PHOTO:
+            Delete the <div class="photo-placeholder">...</div> block below
+            and replace it with: <img src="your-photo.jpg" alt="Your Name" />
+            Place the image file in the same folder as index.html.
+          -->
+          <div class="photo-placeholder">
+            <span class="photo-placeholder-icon">📷</span>
+            <span class="photo-placeholder-text">Add your photo here</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>[Your Name]</h3>
+          <!-- ↑ Replace [Your Name] with your first + last name -->
+          <div class="team-role">Co-Owner &amp; Lead Technician</div>
+          <div class="team-contact">
+            <a href="tel:+1XXXXXXXXXX">📞 (XXX) XXX-XXXX</a>
+            <!-- ↑ Replace XXXXXXXXXX with your 10-digit phone number, and update display text -->
+            <a href="mailto:shared@email.com">✉️ shared@email.com</a>
+            <!-- ↑ Replace with your shared email address -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== OWNER 2 — EDIT BELOW ===== -->
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <!--
+            ADD PARTNER'S PHOTO:
+            Delete the <div class="photo-placeholder">...</div> block below
+            and replace it with: <img src="partner-photo.jpg" alt="Partner Name" />
+            Place the image file in the same folder as index.html.
+          -->
+          <div class="photo-placeholder">
+            <span class="photo-placeholder-icon">📷</span>
+            <span class="photo-placeholder-text">Add your partner's photo here</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>[Partner's Name]</h3>
+          <!-- ↑ Replace [Partner's Name] with their first + last name -->
+          <div class="team-role">Co-Owner &amp; Lead Technician</div>
+          <div class="team-contact">
+            <a href="tel:+1XXXXXXXXXX">📞 (XXX) XXX-XXXX</a>
+            <!-- ↑ Replace with partner's phone number -->
+            <a href="mailto:shared@email.com">✉️ shared@email.com</a>
+            <!-- ↑ Same shared email address -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="reveal">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Request a Free Quote</h2>
+      <p class="section-sub">Fill out the form and we'll reach out within 24 hours — or call us directly for same-day service!</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <h3>Contact Us Directly</h3>
+        <ul class="contact-list">
+          <li>
+            <span class="c-icon">📞</span>
+            <div>
+              <strong>[Your Name]</strong><br />
+              <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-icon">📞</span>
+            <div>
+              <strong>[Partner's Name]</strong><br />
+              <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-icon">✉️</span>
+            <div>
+              <strong>Email</strong><br />
+              <a href="mailto:shared@email.com">shared@email.com</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-icon">📍</span>
+            <div><strong>Service Area</strong><br />Greater Los Angeles &amp; Southern California</div>
+          </li>
+          <li>
+            <span class="c-icon">🕐</span>
+            <div><strong>Hours</strong><br />Mon – Sat: 7 AM – 6 PM<br />Sunday: By Appointment</div>
+          </li>
+        </ul>
+      </div>
+
+      <!--
+        FORM SETUP FOR GITHUB PAGES (FREE):
+        Replace action="#" with your Formspree endpoint:
+        1. Go to https://formspree.io and create a free account
+        2. Create a new form → copy the action URL (looks like https://formspree.io/f/xxxxxxxx)
+        3. Replace action="#" below with that URL
+        4. Change method="post"
+        That's it — form submissions will be emailed to you for free!
+      -->
+      <form class="contact-form reveal" action="#" method="post" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="John" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Doe" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="(XXX) XXX-XXXX" required />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select name="service">
+            <option value="">Select a service…</option>
+            <option>Pressure Washing – One Side ($100)</option>
+            <option>Pressure Washing – Both Sides ($175)</option>
+            <option>Window Cleaning – Full House ($50)</option>
+            <option>Roof &amp; Gutter Cleaning ($125)</option>
+            <option>Car Detailing ($100)</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message / Details</label>
+          <textarea name="message" placeholder="Tell us about your property, any special requests, or preferred dates…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send My Request ➜</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand"><span>A&amp;S</span> Cleaning Services</div>
+      <p style="margin-top:.4rem;">Southern California's Neighborhood Cleaning Pros</p>
+    </div>
+    <p>&copy; 2025 A&amp;S Cleaning Services. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Placeholder form handler — remove this function once you connect Formspree
+    function handleSubmit(e) {
+      if (e.target.action === '#' || e.target.action === window.location.href) {
+        e.preventDefault();
+        alert("Thanks for reaching out!\n\nTo receive this form submission via email, connect Formspree:\n1. Sign up free at formspree.io\n2. Create a form\n3. Replace action=\"#\" in the HTML with your Formspree URL");
+      }
+    }
+  </script>
+</body>
+</html>
